@@ -115,6 +115,7 @@ int main()
             /// add a new user to the system
             int id;
             string name;
+            cout << "Enter user's id & name: ";
             cin>>id>>name;
             add_user(id,name);
             break;
@@ -311,6 +312,7 @@ bool find_user(int user_id,User& us)
     for(int i = 0; i < users.size(); i++)
     {
         User current_user = users[i];
+        cout << user_id << ' ' << current_user.get_id() << endl;
         if(user_id == current_user.get_id()){
             us = current_user;
             return true;
@@ -320,7 +322,9 @@ bool find_user(int user_id,User& us)
 }
 void add_user(int id,string name)
 {
+    cout << id << ' ' << name << endl;
     User user{id,name,empty_books_vector};
+    cout << user.get_id()  << ' ' << user.get_name() << endl;
     users.push_back(user);
 }
 void insert_new_book(int id,int quantity,string name)
