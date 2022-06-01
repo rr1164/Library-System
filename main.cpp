@@ -91,7 +91,7 @@ int main()
             else
             {
                 Book *bk;
-                vector<Book *> boks;
+                vector<Book *> boks = books.get_list();
                 for (int i = 0; i < boks.size(); i++)
                 {
                     Book *new_book = boks[i];
@@ -253,7 +253,7 @@ void print_all_books()
 }
 void print_all_users()
 {
-    vector<User *> uses;
+    vector<User *> uses = users.get_list();
     for (int i = 0; i < uses.size(); i++)
         cout << uses[i]->get_name() << endl;
     cout << endl;
@@ -387,7 +387,7 @@ bool find_book(int book_id)
 }
 bool find_user(int user_id)
 {
-    vector<User *> uses;
+    vector<User *> uses = users.get_list();
     for (int i = 0; i < uses.size(); i++)
     {
         User *current_user = uses[i];
@@ -400,8 +400,7 @@ bool find_user(int user_id)
 }
 void add_user(int id, string name)
 {
-    User user{id, name, empty_books_vector};
-    users.insert_new_user(id, name);
+    cout << users.insert_new_user(id, name)->get_id() << endl;
 }
 void insert_new_book(int id, int quantity, string name)
 {
