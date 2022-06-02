@@ -105,7 +105,7 @@ int main()
                     }
                 }
                 vector<User> borrowers = bk->get_borrowers();
-                cout << "number of borrowers: " << borrowers.size() << ' ' << bk->get_quantity() << endl;
+                cout << "number of borrowers: " << borrowers.size() << " quantity: " << bk->get_quantity() << endl;
                 for (int i = 0; i < borrowers.size(); i++)
                 {
                     cout << borrowers[i].get_name() << endl;
