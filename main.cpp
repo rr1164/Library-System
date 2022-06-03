@@ -9,7 +9,7 @@ BooksList books;
 void insert_new_book(int id, int quantity, string name);
 bool Cmp_Id(Book *i, Book *j);
 bool Cmp_name(Book *i, Book *j);
-void print_all_books();
+void print_all_books(vector<Book *> boks);
 bool find_book(string name);
 bool find_book(int book_id);
 bool find_user(int user_id);
@@ -105,7 +105,7 @@ int main()
                     }
                 }
                 vector<User> borrowers = bk->get_borrowers();
-                cout << "number of borrowers: " << borrowers.size() << " quantity: " << bk->get_quantity() << endl;
+                cout << "number of borrowers: " << borrowers.size() << ' ' << bk->get_quantity() << endl;
                 for (int i = 0; i < borrowers.size(); i++)
                 {
                     cout << borrowers[i].get_name() << endl;
@@ -117,7 +117,8 @@ int main()
         {
             vector<Book *> boks = books.get_list();
             sort(boks.begin(), boks.end(), Cmp_Id);
-            print_all_books();
+            books.set_list(boks);
+            print_all_books(books.get_list());
             break;
         }
         case 5:
@@ -125,7 +126,8 @@ int main()
             /// print all books sorted lexicographically
             vector<Book *> boks = books.get_list();
             sort(boks.begin(), boks.end(), Cmp_name);
-            print_all_books();
+            books.set_list(boks);
+            print_all_books(books.get_list());
             break;
         }
         case 6:
@@ -244,9 +246,8 @@ int main()
     }
     return 0;
 }
-void print_all_books()
+void print_all_books(vector<Book *> boks)
 {
-    vector<Book *> boks = books.get_list();
     for (int i = 0; i < boks.size(); i++)
         cout << boks[i]->get_name() << endl;
     cout << endl;
@@ -412,5 +413,10 @@ bool Cmp_Id(Book *i, Book *j)
 }
 bool Cmp_name(Book *i, Book *j)
 {
-    return i->get_name() < j->get_name();
+    string a = i->get_name(),b = j->get_name();
+    for(int i = 0; i < a.size();i++)
+        a[i] = tolower(a[i]);
+    for(int i = 0; i < b.size();i++)
+        b[i] = tolower(b[i]);
+    return a < b;
 }
