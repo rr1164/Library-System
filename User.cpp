@@ -1,8 +1,5 @@
 #include "User.h"
 #include "Book.h"
-#include <vector>
-#include <cassert>
-#include <string>
 User::User(int theId, std::string theName)
 {
     set_id(theId);

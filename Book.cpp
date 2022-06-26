@@ -1,8 +1,6 @@
 #include "Book.h"
 #include "User.h"
-#include <vector>
 #include <cassert>
-#include <string>
 Book::Book(int theId, std::string theName, int theQuantity, std::vector<User*> theBorrowers)
 {
     set_quantity(theQuantity);
