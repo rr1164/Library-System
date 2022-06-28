@@ -224,6 +224,7 @@ int main() {
                 std::string name;
                 std::cin >> id >> name >> quantity;
                 books_manager.add_new_book(id, name, quantity);
+                std::cout << "book added successfully!" << std::endl;
                 break;
             }
             case 2: {
@@ -261,7 +262,8 @@ int main() {
                 std::cout << "Enter user's id & name: ";
                 std::cin >> id >> name;
                 users_manager.add_new_user(id, name);
-                break;
+                  std::cout << "user added successfully!" << std::endl;
+              break;
             }
             case 7: {
                 /// let user borrow a book
