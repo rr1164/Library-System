@@ -1,15 +1,10 @@
 #include "Book.h"
-#include "User.h"
 #include <cassert>
-Book::Book(int theId, std::string theName, int theQuantity, std::vector<User*> theBorrowers)
+Book::Book(int theId, std::string theName, int theQuantity)
 {
     set_quantity(theQuantity);
     set_name(theName);
     set_id(theId);
-    set_borrwers(theBorrowers);
-}
-Book::Book()
-{
 }
 std::string Book::get_name() const
 {
@@ -24,10 +19,7 @@ int Book::get_id() const
     return id;
 }
 
-std::vector<User*> Book::get_borrowers() const
-{
-    return borrowers;
-}
+
 void Book::set_quantity(int newQuantity)
 {
     assert(newQuantity >= 0);
@@ -45,12 +37,6 @@ void Book::set_id(int newId)
     id = newId;
     return;
 }
-void Book::set_borrwers(std::vector<User*> newborrowers)
-{
-    borrowers = newborrowers;
-    return;
-}
-
 Book::~Book(){
-    borrowers.clear();
+    name.clear();
 }
